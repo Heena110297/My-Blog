@@ -1,13 +1,16 @@
 <form class="my-form">
   <mat-grid-list cols="1" rowHeight="80px">
+    <div>
     <mat-grid-tile [colspan]="1">
-      <div align="center">
-      <mat-form-field>
+      <mat-form-field style="width: 650px;">
         <mat-label>Leave a comment</mat-label>
-          <textarea class="my-textArea" matInput appearance="outline" placeholder="Ex. Awesome performance !" style="width:800px;">
+          <textarea class="my-textArea" matInput appearance="outline" placeholder="Ex. Awesome performance !">
           </textarea>
       </mat-form-field>
-    </div>
     </mat-grid-tile>
+  </div>
   </mat-grid-list>
+  <div>
+  <button mat-raised-button color="primary" type="submit" ></button>
+</div>
 </form>

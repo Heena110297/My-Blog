@@ -1,5 +1,5 @@
 .my-form{
-  width: 500px;
+  width: 800px;
   height: 200px;
   border-left: 5px solid #000;
   border-right: 5px solid #000;
@@ -10,7 +10,6 @@
 }
 
 .my-textArea{
-  width: 500px;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   border-top:1px solid #000;;
