@@ -1,8 +1,13 @@
 <form>
-<mat-form-field>
-  <mat-label>Leave a comment</mat-label>
-  <textarea matInput class="example-full-width" appearance="outline" placeholder="Ex. Awesome performance !">
-</textarea>
-</mat-form-field>
+  <mat-grid-list cols="1" rowHeight="80px">
+    <mat-grid-tile [colspan]="1">
+      <div align="center">
+      <mat-form-field>
+        <mat-label>Leave a comment</mat-label>
+          <textarea matInput appearance="outline" placeholder="Ex. Awesome performance !" style="width:800px;">
+          </textarea>
+      </mat-form-field>
+    </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </form>
-
