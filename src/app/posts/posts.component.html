@@ -1,10 +1,32 @@
-<form class="my-form">
+<form class="my-form" [formGroup]="commentsForm" (ngSubmit)="postComment()">
   <div display="flex">
       <mat-form-field style="width: 550px; margin: 10px; height: 200px;">
         <mat-label>Leave a comment</mat-label>
-          <textarea class="my-textArea" matInput appearance="outline" placeholder="Ex. Awesome performance !">
+          <textarea matInput appearance="outline" placeholder="Ex. Awesome performance !" formControlName="comment" required>
           </textarea>
+          <mat-error *ngIf="commentsForm.get('comment').invalid">
+          {{getErrorMessageForComment()}}
+          </mat-error>
       </mat-form-field>
-     <button mat-raised-button color="primary" type="submit" >Submit</button>
+     <button mat-raised-button color="primary" type="submit"  [disabled]='!commentsForm.valid' >Submit</button>
 </div>
 </form>
+<div display="flex" align=center>
+<mat-card *ngFor="let comment of comments" style="margin-top: 2%; width:800px;">
+  <div style="display: flex;justify-content: space-between;">
+    <mat-card-subtitle style="margin-top: 1%;">{{comment.date}}</mat-card-subtitle>
+  </div>
+  <mat-card-content>
+    <p>
+      {{comment.comment}}
+    </p>
+    <p>
+      {{comment.likes}} person(s) liked your comment.
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="center">
+    <button mat-button color="primary" (click)="increaseLikes(comment.id)">Like</button>
+    <button mat-button color="primary" (click)="postComment()">Delete</button>
+  </mat-card-actions>
+</mat-card>
+</div>
