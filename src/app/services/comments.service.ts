@@ -28,6 +28,10 @@ export class CommentsService {
     return of(this.comments);
   }
 
+  getNumberOfComments(): number {
+    return this.comments.length;
+  }
+
   increaseNumberOfLikes(id: number){
    const newLikes = (this.comments.find(x => x.id === id)).likes + 1;
    this.comments.find(x => x.id === id).likes = newLikes;
@@ -36,7 +40,7 @@ export class CommentsService {
   postComment(newComment: string){
     const todayDate = new Date();
     const comment: Comment = {
-      id: todayDate.getDay() + todayDate.getMonth() + todayDate.getFullYear(),
+      id: todayDate.getTime(),
       date: todayDate,
       comment: newComment,
       likes: 0

@@ -11,10 +11,16 @@
      <button mat-raised-button color="primary" type="submit"  [disabled]='!commentsForm.valid' >Submit</button>
 </div>
 </form>
+<mat-paginator [length]= "numberOfComments"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="onPageChange($event)"
+              >
+</mat-paginator>
 <div display="flex" align=center>
-<mat-card *ngFor="let comment of comments" style="margin-top: 2%; width:800px;">
+<mat-card *ngFor="let comment of paginatedComments" style="margin-top: 0.5%; width:800px;">
   <div style="display: flex;justify-content: space-between;">
-    <mat-card-subtitle style="margin-top: 1%;">{{comment.date}}</mat-card-subtitle>
+    <mat-card-subtitle style="margin-top: 1%;">{{comment.date | date:'mediumDate'}}</mat-card-subtitle>
   </div>
   <mat-card-content>
     <p>
@@ -30,3 +36,4 @@
   </mat-card-actions>
 </mat-card>
 </div>
+

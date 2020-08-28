@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostsComponent } from './posts/posts.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostsComponent } from './posts/posts.component';
     AngularMaterialModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
