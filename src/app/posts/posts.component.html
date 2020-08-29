@@ -17,23 +17,7 @@
               (page)="onPageChange($event)"
               >
 </mat-paginator>
-<div display="flex" align=center>
-<mat-card *ngFor="let comment of paginatedComments" style="margin-top: 0.5%; width:800px;">
-  <div style="display: flex;justify-content: space-between;">
-    <mat-card-subtitle style="margin-top: 1%;">{{comment.date | date:'mediumDate'}}</mat-card-subtitle>
-  </div>
-  <mat-card-content>
-    <p>
-      {{comment.comment}}
-    </p>
-    <p>
-      {{comment.likes}} person(s) liked your comment.
-    </p>
-  </mat-card-content>
-  <mat-card-actions align="center">
-    <button mat-button color="primary" (click)="increaseLikes(comment.id)">Like</button>
-    <button mat-button color="primary" (click)="postComment()">Delete</button>
-  </mat-card-actions>
-</mat-card>
+<div display="flex" align=center *ngFor="let comment of paginatedComments">
+  <app-post [comment]=comment></app-post>
 </div>
 

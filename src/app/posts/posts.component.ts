@@ -16,13 +16,12 @@ export class PostsComponent implements OnInit {
   commentsForm = new FormGroup({
     comment: new FormControl(null, [Validators.required, Validators.minLength(50)])
   });
+
   comments: Comment[] = [];
   paginatedComments: Comment[] = [];
   numberOfComments = 0;
 
   @ViewChild(FormGroupDirective) formDirective: FormGroupDirective;
-
-
 
   ngOnInit(): void {
     this.getComments();
@@ -78,7 +77,7 @@ export class PostsComponent implements OnInit {
   }
 
   onPageChange(pageChangeEvent: PageEvent) {
-    console.log(pageChangeEvent.pageIndex,pageChangeEvent.pageSize);
+    console.log(pageChangeEvent.pageIndex, pageChangeEvent.pageSize);
     this.getPaginatedComments(pageChangeEvent.pageIndex, pageChangeEvent.pageSize);
   }
 }
