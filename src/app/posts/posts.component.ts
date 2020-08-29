@@ -57,10 +57,6 @@ export class PostsComponent implements OnInit {
     }
   }
 
-  increaseLikes(id: number) {
-    this.commentsService.increaseNumberOfLikes(id);
-  }
-
   getPaginatedComments(pageNumber, pageSize) {
     let start;
     let end;

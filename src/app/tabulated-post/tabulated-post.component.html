@@ -1,0 +1,47 @@
+<form class="my-form" [formGroup]="commentsForm" (ngSubmit)="postComment()">
+  <div display="flex">
+      <mat-form-field style="width: 550px; margin: 10px; height: 200px;">
+        <mat-label>Leave a comment</mat-label>
+          <textarea matInput appearance="outline" placeholder="Ex. Awesome performance !" formControlName="comment" required>
+          </textarea>
+          <mat-error *ngIf="commentsForm.get('comment').invalid">
+          {{getErrorMessageForComment()}}
+          </mat-error>
+      </mat-form-field>
+     <button mat-raised-button color="primary" type="submit"  [disabled]='!commentsForm.valid' >Submit</button>
+</div>
+</form>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+      <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Likes">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Likes </th>
+      <td mat-cell *matCellDef="let row"> {{row.likes}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let row"> {{row.date | date:'mediumDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <td mat-cell *matCellDef="let row">
+        <div display=flex>
+         <button mat-raised-button color="primary" type="submit" (click)="increaseLikes(row.id)" style="margin:1%;">Like</button>
+         <button mat-raised-button color="primary" type="submit" >Delete</button>
+        </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
