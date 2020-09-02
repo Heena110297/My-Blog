@@ -15,7 +15,7 @@ import { TabulatedPostComponent } from './tabulated-post/tabulated-post.componen
 import { PrecautionsService} from './services/precautions.service';
 import { PrecautionsComponent } from './precautions/precautions.component';
 import { AddEditPrecautionsComponent } from './precautions/add-edit-precautions/add-edit-precautions.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { AddEditPrecautionsComponent } from './precautions/add-edit-precautions/
     ReactiveFormsModule,
     HttpClientModule,
     MatPaginatorModule,
+    ToastrModule.forRoot(),
     HttpClientInMemoryWebApiModule.forRoot(PrecautionsService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true
